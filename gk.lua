@@ -17,7 +17,7 @@ local logout_url_host = "" -- leave blank if login_if_redirected = true
 --[[
     
    For Zimbra:
-    - Copy gk.lua to /etc/nginx/
+    - Copy gk.lua and sha2.lua to /etc/nginx/
     - Edit it and add the information regarding the GuardianKey integration (AuthgroupID, key...)
     - Edit nginx.conf or an included file, example sites-enabled/default, and create the reference to gk.lua, such as below
        location / {
