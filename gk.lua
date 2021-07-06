@@ -131,3 +131,9 @@ if ngx.req.get_method() == 'POST' and args["loginOp"] ~= nil and args["username"
         -- ngx.arg[1] = response_body2
     end
 end
+
+--[[
+References:
+    - https://github.com/openresty/lua-nginx-module#readme
+    - https://openresty-reference.readthedocs.io/en/latest/Lua_Nginx_API/
+--]]
