@@ -9,6 +9,7 @@ local service  = "Zimbra" -- May be anything
 
 -- More information
 local login_if_redirected = true
+local user_name_is_email  = true
 local email_domain        = "@domainxptofoobar.com"
 local login_failed_string = "CAPS LOCK"
 local logout_url      = "" -- leave blank if login_if_redirected = true
@@ -84,9 +85,13 @@ if ngx.req.get_method() == 'POST' and args["loginOp"] ~= nil and args["username"
     local client_ip  = tostring(ngx.var.remote_addr) -- https://stackoverflow.com/questions/42140346/get-client-ip-address-with-nginx-lua
     local user_agent = req_headers['User-Agent']
     local username   = args["username"]
-    local useremail  = username
+    local useremail  = ""
     if not string.find(username,"@") then
-        useremail  = username .. email_domain
+        username  = username .. email_domain
+    end
+
+    if user_name_is_email then
+        useremail  = username
     end
 
     local login_failed = "0"
